@@ -1,12 +1,5 @@
-import json
-import requests
-import tkinter as tk
-from dataGetter import DataGetter as DGet
+from winMaker import discForm
 
-dataGet = DGet('https://api.github.com')
-
-janela = tk.Tk()
-janela.title('Disciplina')
-janela.geometry('300x250')
-
-janela.mainloop()
+window = discForm("Disciplinas", 300, 230, False, False,
+                  'https://raw.githubusercontent.com/LucasXM12/ados_proj_04/43474f15511effbe0933f1e05b9c452c7504f803/test_json.json')
+window.activateLoop()

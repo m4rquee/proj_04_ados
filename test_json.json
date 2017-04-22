@@ -1,8 +1,8 @@
 {
-	"Materias": [
-		{"cod": 1, "nome": "Matemática"},
-		{"cod": 2, "nome": "Português"},
-		{"cod": 3, "nome": "Inglês"},
-		{"cod": 4, "nome": "Física"}
+	"Disciplinas": [
+		{"cod": 1, "mat": "Matemática"},
+		{"cod": 2, "mat": "Português"},
+		{"cod": 3, "mat": "Inglês"},
+		{"cod": 4, "mat": "Física"}
 	]
 }
