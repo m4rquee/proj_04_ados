@@ -50,9 +50,12 @@ class discForm():
         self.lblStatus.config(text=message)
 
     def onClickBtnObter(self):
-        jsonData = self.dataGet.get_json_data()
+        disc = self.dataGet.get_json_data()["Disciplinas"][0]
 
-        self.changeStatus(jsonData.keys())
+        discCod = disc["cod"]
+        discMat = disc["mat"]
+
+        self.changeStatus("Código: " + str(discCod) + ", Matéria: " + str(discMat))
 
     def activateLoop(self):
         self.window.mainloop()
