@@ -61,9 +61,9 @@ class discForm():
             elif nome:
                 disc = self.dataGet.get_json_data(nome=nome)
             else:
-                disc = "Campos vazios!!!"
+                disc = "Campo(s) vazio(s)!!!"
 
-            self.changeStatus(disc)
+            self.changeStatus("Código: " + str(disc["codigo"]) + ", Nome: " + str(disc["nome"]))
         except Exception as e:
             print(e) 
         
