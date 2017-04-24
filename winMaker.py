@@ -43,19 +43,29 @@ class discForm():
         self.enCod = tk.Entry(self.window, font=("Arial", 10))
         self.enCod.place(x=140, y=15)
 
-        self.enMat = tk.Entry(self.window, font=("Arial", 10))
-        self.enMat.place(x=140, y=65)
+        self.enNome = tk.Entry(self.window, font=("Arial", 10))
+        self.enNome.place(x=140, y=65)
 
     def changeStatus(self, message):
         self.lblStatus.config(text=message)
 
     def onClickBtnObter(self):
-        disc = self.dataGet.get_json_data()["Disciplinas"][0]
+        try:
+            codigo = self.enCod.get()
+            nome = self.enNome.get()
 
-        discCod = disc["cod"]
-        discMat = disc["mat"]
+            if codigo and nome:
+                disc = self.dataGet.get_json_data(codigo=codigo, nome=nome)
+            elif codigo:
+                disc = self.dataGet.get_json_data(codigo=codigo)
+            elif nome:
+                disc = self.dataGet.get_json_data(nome=nome)
+            else:
+                disc = "Campos vazios!!!"
 
-        self.changeStatus("Código: " + str(discCod) + ", Matéria: " + str(discMat))
-
+            self.changeStatus(disc)
+        except Exception as e:
+            print(e) 
+        
     def activateLoop(self):
         self.window.mainloop()
