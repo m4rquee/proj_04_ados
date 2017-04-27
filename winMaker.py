@@ -51,21 +51,31 @@ class discForm():
 
     def onClickBtnObter(self):
         try:
-            codigo = self.enCod.get()
             nome = self.enNome.get()
+            codigo = self.enCod.get()
+
+            if codigo:
+                try:
+                    int_cod = int(codigo)
+                except Exception as e:
+                    self.changeStatus("Código inválido!!!") 
+                    return
 
             if codigo and nome:
-                disc = self.dataGet.get_json_data(codigo=codigo, nome=nome)
+                disc = self.dataGet.get_json_data(codigo=int_cod, nome=nome)
             elif codigo:
-                disc = self.dataGet.get_json_data(codigo=codigo)
+                disc = self.dataGet.get_json_data(codigo=int_cod)
             elif nome:
                 disc = self.dataGet.get_json_data(nome=nome)
             else:
                 disc = "Campo(s) vazio(s)!!!"
 
-            self.changeStatus("Código: " + str(disc["codigo"]) + ", Nome: " + str(disc["nome"]))
+            if type(disc) is str:
+                self.changeStatus(disc)
+            else:
+                self.changeStatus("Código: " + str(disc["codigo"]) + ", Nome: " + str(disc["nome"]))
         except Exception as e:
-            print(e) 
+            self.changeStatus(str(e)) 
         
     def activateLoop(self):
         self.window.mainloop()
