@@ -21,3 +21,4 @@ class DataGetter(object):
             raise Exception("Erro ao recuperar os dados do servidor!!!")
 
         return resp.json() if resp.content else "Sem resultados"
+        
